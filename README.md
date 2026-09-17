@@ -55,6 +55,51 @@ google-sheets-data-pipeline/
 ├── analyses/        # dbt analytical queries
 └── dbt_project.yml  # Main dbt project configuration
 ```
+## 🚀 Setup & Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Payamkhoshhal/google-sheets-data-pipeline.git
+cd google-sheets-data-pipeline
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate it:
+
+**macOS / Linux**
+
+```bash
+source .venv/bin/activate
+```
+
+**Windows**
+
+```bash
+.venv\Scripts\activate
+```
+
+### 3. Install Python dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure the database connection
+
+Create a `.env` file based on `.env.example` and provide your PostgreSQL connection string:
+
+```env
+DATABASE_URL=postgresql://username:password@hostname:5432/database_name
+```
+
+> Never commit your real `.env` file or database credentials.
+
 ## ⚙️ How It Works
 
 ### 1. Extract Data
