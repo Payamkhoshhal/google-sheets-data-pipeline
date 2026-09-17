@@ -11,6 +11,26 @@ An end-to-end data engineering project that extracts data from Google Sheets usi
 - **dbt** — Data transformation and testing
 # data description:
 
+## 🏗️ Architecture
+
+The pipeline follows a simple ELT workflow:
+
+```mermaid
+flowchart LR
+    A[Google Sheets] -->|Extract| B[Python]
+    B -->|Load| C[(PostgreSQL<br/>AWS RDS)]
+    C -->|Transform| D[dbt]
+    D --> E[(Analytics Models)]
+    D --> F[Data Tests]
+```
+
+### Data Flow
+
+1. **Extract** — Python retrieves source data from Google Sheets.
+2. **Load** — The raw data is loaded into PostgreSQL hosted on AWS RDS.
+3. **Transform** — dbt transforms the raw data into structured analytical models.
+4. **Test** — dbt tests are used to validate data quality.
+
 Data sheets consist of three columns. Column start shows the exact time and date that call was began. Column duration is the max duration of events in the channels.
 Column channels has a json data. In the channels there are some data related to guid of each call and information related to agents that can be an Agent, Monitor and External. Some other information about different parts of a call such as Ringing, Connected, Callrecording, Held and Wrap. Each events has a specific duration and offset. If the offset started at zero, sum of the three events Ringing, Connected and Wrap is stored as duration otherwise sum of mentioned events with the offset will be stored as duration. 
 
