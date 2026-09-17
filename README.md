@@ -100,6 +100,21 @@ DATABASE_URL=postgresql://username:password@hostname:5432/database_name
 
 > Never commit your real `.env` file or database credentials.
 
+### 5. Configure Google Sheets API credentials
+
+Create a Google Cloud service account with access to the Google Sheets API, then download the service account key file.
+
+Save the key file locally as:
+
+```text
+Keys.json
+```
+
+Make sure the Google Sheet you want to read is shared with the service account email address.
+
+> `Keys.json` is ignored by Git and should never be committed to the repository.
+
+
 ## ⚙️ How It Works
 
 ### 1. Extract Data
