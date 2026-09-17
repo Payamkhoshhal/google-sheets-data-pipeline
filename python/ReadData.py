@@ -4,6 +4,7 @@ import pandas as pd
 import json
 import datetime
 from sqlalchemy import create_engine
+import os 
 
 def main():
     # created a gcp account and got credential for google sheet, stored keys in a json file in the same folder  
@@ -21,7 +22,8 @@ def main():
     result = sheet.values().get(spreadsheetId = spreadsheet_id ,range ="Calls!A2:C1861").execute()
     values = result.get('values', [])
     #create a connection to Aws rds postgres
-    engine = create_engine('postgresql://postgres:12345678@aws-postgres-medbelle.cvxmljrcrnp5.us-east-1.rds.amazonaws.com:5432/medbelle')
+    DATABASE_URL = os.getenv("DATABASE_URL")
+    engine = create_engine(DATABASE_URL)    
     
     for i in range(len(values)):
         # in each loop a json file will be created 
