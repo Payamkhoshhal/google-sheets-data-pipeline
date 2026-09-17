@@ -30,8 +30,17 @@ flowchart LR
 3. **Transform** — dbt transforms the raw data into structured analytical models.
 4. **Test** — dbt tests are used to validate data quality.
 
-Data sheets consist of three columns. Column start shows the exact time and date that call was began. Column duration is the max duration of events in the channels.
-Column channels has a json data. In the channels there are some data related to guid of each call and information related to agents that can be an Agent, Monitor and External. Some other information about different parts of a call such as Ringing, Connected, Callrecording, Held and Wrap. Each events has a specific duration and offset. If the offset started at zero, sum of the three events Ringing, Connected and Wrap is stored as duration otherwise sum of mentioned events with the offset will be stored as duration. 
+## 📊 Dataset
+
+The source data is stored in Google Sheets and contains three main fields:
+
+| Column | Description |
+| --- | --- |
+| `Date` | Date associated with the recorded value |
+| `Dimension` | Category or dimension used to group the data |
+| `Value` | Numeric value associated with the dimension |
+
+The pipeline extracts this data from Google Sheets and loads it into PostgreSQL, where dbt is used to transform it into analytical models.
 
 # Steps:
 
