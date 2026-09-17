@@ -9,7 +9,6 @@ An end-to-end data engineering project that extracts data from Google Sheets usi
 - **PostgreSQL** — Data warehouse
 - **AWS RDS** — Cloud-hosted PostgreSQL database
 - **dbt** — Data transformation and testing
-# data description:
 
 ## 🏗️ Architecture
 
