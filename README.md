@@ -55,31 +55,20 @@ google-sheets-data-pipeline/
 ├── analyses/        # dbt analytical queries
 └── dbt_project.yml  # Main dbt project configuration
 ```
+## ⚙️ How It Works
 
-# Steps:
+### 1. Extract Data
 
-      . Created a Postgresql database in AWS RDS
- 
-      . Read data from google sheet and load it to the postgresql
- 
-      . Connected to the postgresql database with dbt
- 
-      . Created models and tests in dbt
- 
-      . Transformed the data into new schema (dbt_pkhoshhalsoustani)
+Python connects to Google Sheets and retrieves the source data using the Google Sheets API.
 
+### 2. Load Data
 
-This repository consists of the ReadData.py file for loading the data in python folder and the dbt models and tests files for transformation in models and tests/generic folders. 
+The extracted data is loaded into a PostgreSQL database hosted on AWS RDS.
 
-# dbt
+### 3. Transform Data
 
-In this project, you will see two models. The first one is a raw model from the source of data which is in Postgres AWS RDS and the second one is fact_calls which loads data from the raw model and do transformations for getting the expected results.
+dbt is used to transform the raw data into structured analytical models. The transformation logic is organized inside the `models/` directory.
 
-There is a schema.yml file that describes tables and columns also some dbt built-in tests such as not null and unique were created on the columns. I created a generic test and used it for checking the total_duration with other existing durations (Ringing, Connected, and Wrap).
+### 4. Test Data
 
-# python
-
-Data from google sheets was extracted by getting access to gcp account and having required credentials. Then data was stored in pandas dataframe and was moved to postgres sql database in aws rds servic.
-
-More details were commented in the scripts.
-
+dbt tests validate the transformed data and help ensure data quality throughout the pipeline.
