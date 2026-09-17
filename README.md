@@ -42,6 +42,20 @@ The source data is stored in Google Sheets and contains three main fields:
 
 The pipeline extracts this data from Google Sheets and loads it into PostgreSQL, where dbt is used to transform it into analytical models.
 
+## 📁 Project Structure
+
+```text
+google-sheets-data-pipeline/
+├── python/          # Python scripts for extracting and loading data
+├── models/          # dbt transformation models
+├── tests/           # Custom dbt data tests
+├── macros/          # Reusable dbt macros
+├── seeds/           # Static data files used by dbt
+├── snapshots/       # dbt snapshots
+├── analyses/        # dbt analytical queries
+└── dbt_project.yml  # Main dbt project configuration
+```
+
 # Steps:
 
       . Created a Postgresql database in AWS RDS
