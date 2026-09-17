@@ -23,6 +23,10 @@ def main():
     values = result.get('values', [])
     #create a connection to Aws rds postgres
     DATABASE_URL = os.getenv("DATABASE_URL")
+
+    if not DATABASE_URL:
+        raise ValueError("DATABASE_URL environment variable is not set")
+
     engine = create_engine(DATABASE_URL)    
     
     for i in range(len(values)):
