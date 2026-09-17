@@ -1,5 +1,14 @@
-# medbelle 
+# Google Sheets Data Pipeline
 
+An end-to-end data engineering project that extracts data from Google Sheets using Python, loads it into PostgreSQL hosted on AWS RDS, and transforms and tests the data using dbt.
+
+## 🛠️ Tech Stack
+
+- **Python** — Data extraction and loading
+- **Google Sheets API** — Source data
+- **PostgreSQL** — Data warehouse
+- **AWS RDS** — Cloud-hosted PostgreSQL database
+- **dbt** — Data transformation and testing
 # data description:
 
 Data sheets consist of three columns. Column start shows the exact time and date that call was began. Column duration is the max duration of events in the channels.
